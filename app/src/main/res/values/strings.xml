@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">FileScan</string>
+    <string name="scan_description">FileScan scans your external sdcard memory and displayes some stats for your viewing pleasure.</string>
+    <string name="start">START</string>
+    <string name="stop">STOP</string>
+    <string name="results">Results:</string>
+    <string name="top_five_extensions">Top Five Extensions:</string>
+    <string name="average_file_size">Average File Size:</string>
+    <string name="mb">mb</string>
+    <string name="show_results">Show Results</string>
+    <string name="ten_largest_files">Ten Largest Files:</string>
+    <string name="share">Share</string>
+    <string name="send_to">Send To:</string>
+    <string name="ms_delay">delay in ms</string>
+    <string name="demo_delay_number">500</string>
+    <string name="poor_choice">You Chose Poorly. Better luck next time.</string>
+</resources>
