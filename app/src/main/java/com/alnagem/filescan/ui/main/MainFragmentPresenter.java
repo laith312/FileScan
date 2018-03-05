@@ -57,7 +57,7 @@ class MainFragmentPresenter extends BaseMVPPresenter<MainFragmentView> {
         isScanning = true;
         setSearchButtonState();
 
-        scanObservable.subscribeOn(Schedulers.newThread())
+        scanObservable.subscribeOn(Schedulers.single())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
     }
@@ -103,7 +103,7 @@ class MainFragmentPresenter extends BaseMVPPresenter<MainFragmentView> {
 
         SystemClock.sleep(demoSleepDuration);
 
-        if (!disposable.isDisposed()) {
+        if (!disposable.isDisposed() && allFiles.size() > 10) {
             result = new ScanResult(extensions, allFiles.subList(0, 10), averageFileSize);
         }
 
@@ -124,6 +124,9 @@ class MainFragmentPresenter extends BaseMVPPresenter<MainFragmentView> {
 
 
     private double getAverageFileSize(List<File> allFiles) {
+        if (allFiles.size() == 0) {
+            return 0;
+        }
         double totalSize = 0;
         for (File f : allFiles) {
             totalSize += f.length();
