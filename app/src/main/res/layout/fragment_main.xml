@@ -63,6 +63,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:ems="10"
+        android:focusedByDefault="false"
         android:inputType="number"
         android:text="@string/demo_delay_number"
         android:textAlignment="center"
