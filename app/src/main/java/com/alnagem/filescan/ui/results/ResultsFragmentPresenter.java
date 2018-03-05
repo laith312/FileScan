@@ -4,6 +4,8 @@ import com.alnagem.filescan.model.ScanResult;
 import com.alnagem.filescan.ui.mvpbase.BaseMVPPresenter;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lalnagem on 3/5/18.
@@ -23,8 +25,9 @@ public class ResultsFragmentPresenter extends BaseMVPPresenter<ResultsFragmentVi
             getMvpView().displayAverageSize(String.format("%.2f", scanResult.getAverageFileSize()));
 
             StringBuilder extensions = new StringBuilder();
-            for (String extension : scanResult.getTopFiveExtensions()) {
-                extensions.append(".").append(extension).append("   ");
+            List<String> topFive = scanResult.getTopFiveExtensions();
+            for (String extension : topFive) {
+                extensions.append(".").append(extension).append("\n");
             }
             getMvpView().displayTopFiveEntensions(extensions.toString());
 

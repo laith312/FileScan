@@ -97,18 +97,29 @@ class MainFragmentPresenter extends BaseMVPPresenter<MainFragmentView> {
         e.onNext(85);
 
         SystemClock.sleep(demoSleepDuration);
-
-        List<String> extentions = new ArrayList<>(sortedMap.keySet());
+        List<String> extensions = generateExtensionList(sortedMap);
 
         e.onNext(90);
 
         SystemClock.sleep(demoSleepDuration);
 
         if (!disposable.isDisposed()) {
-            result = new ScanResult(extentions.subList(0, 5), allFiles.subList(0, 10), averageFileSize);
+            result = new ScanResult(extensions, allFiles.subList(0, 10), averageFileSize);
         }
 
         e.onNext(100);
+    }
+
+    List<String> generateExtensionList(HashMap<String, Integer> map) {
+        List<String> result = new ArrayList<>();
+
+        List<String> keys = new ArrayList<>(map.keySet()).subList(0, 5);
+
+        for (String key : keys) {
+            result.add(key + " (" + map.get(key) + ")");
+        }
+
+        return result;
     }
 
 

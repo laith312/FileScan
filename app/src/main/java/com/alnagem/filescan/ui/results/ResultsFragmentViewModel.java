@@ -11,6 +11,6 @@ import java.util.List;
 
 public class ResultsFragmentViewModel extends ViewModel {
     String averageFileSize;
-    String topFiveExtensions;
     List<File> tenLargestFiles;
+    String topFiveExtensions;
 }
