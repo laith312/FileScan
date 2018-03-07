@@ -103,8 +103,8 @@ class MainFragmentPresenter extends BaseMVPPresenter<MainFragmentView> {
 
         SystemClock.sleep(demoSleepDuration);
 
-        if (!disposable.isDisposed() && allFiles.size() > 10) {
-            result = new ScanResult(extensions, allFiles.subList(0, 10), averageFileSize);
+        if (!disposable.isDisposed()) {
+            result = new ScanResult(extensions, allFiles.subList(0, allFiles.size() >= 10 ? 10 : allFiles.size()), averageFileSize);
         }
 
         e.onNext(100);
@@ -113,7 +113,7 @@ class MainFragmentPresenter extends BaseMVPPresenter<MainFragmentView> {
     List<String> generateExtensionList(HashMap<String, Integer> map) {
         List<String> result = new ArrayList<>();
 
-        List<String> keys = new ArrayList<>(map.keySet()).subList(0, 5);
+        List<String> keys = new ArrayList<>(map.keySet()).subList(0, map.size() < 5 ? map.size() : 5);
 
         for (String key : keys) {
             result.add(key + " (" + map.get(key) + ")");
@@ -124,7 +124,7 @@ class MainFragmentPresenter extends BaseMVPPresenter<MainFragmentView> {
 
 
     private double getAverageFileSize(List<File> allFiles) {
-        if (allFiles.size() == 0) {
+        if (allFiles.isEmpty()) {
             return 0;
         }
         double totalSize = 0;
